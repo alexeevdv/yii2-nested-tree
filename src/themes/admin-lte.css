@@ -1,0 +1,41 @@
+.treeWidgetContainer {
+
+}
+
+.treeWidgetElement {
+    list-style: none;
+    padding-left: 30px;
+    margin: 5px;
+    border: 1px solid #3f3f3f;
+}
+
+.treeWidgetElement div {
+    padding: 7px;
+    background-color: #ddd;
+}
+
+.treeWidgetPlaceholderClass {
+    list-style: none;
+    padding-left: 30px;
+    margin: 5px;
+    border: 1px solid #3f3f3f;
+    background-color: red;
+}
+
+.treeWidgetCurrentElementClass {
+    background-color: green;
+    list-style: none;
+    padding-left: 30px;
+    margin: 5px;
+    border: 1px solid #3f3f3f;
+}
+
+.treeWidgetCurrentElementClass div {
+    padding: 7px;
+    background-color: #ddd;
+}
+
+.treeWidgetHintClass {
+    background-color: green;
+}
+
