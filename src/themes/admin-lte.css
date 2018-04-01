@@ -1,41 +1,43 @@
 .treeWidgetContainer {
-
+    padding: 0;
 }
 
 .treeWidgetElement {
     list-style: none;
-    padding-left: 30px;
+    border: 1px solid #f4f4f4;
     margin: 5px;
-    border: 1px solid #3f3f3f;
+    margin-right: 0px;
+}
+
+.treeWidgetElement ul {
+    padding-left: 20px;
 }
 
 .treeWidgetElement div {
-    padding: 7px;
-    background-color: #ddd;
+    padding: 8px;
+    padding-right: 0px
+}
+
+.treeWidgetElement .treeWidgetElementButtons {
+    float: right;
+    padding-right: 10px;
+}
+
+.treeWidgetElement .treeWidgetElementButton {
+    margin-left: 10px;
 }
 
 .treeWidgetPlaceholderClass {
-    list-style: none;
-    padding-left: 30px;
-    margin: 5px;
-    border: 1px solid #3f3f3f;
-    background-color: red;
+    background-color: #dd4b39;
+    opacity: 0.65;
 }
 
 .treeWidgetCurrentElementClass {
-    background-color: green;
-    list-style: none;
-    padding-left: 30px;
-    margin: 5px;
-    border: 1px solid #3f3f3f;
-}
-
-.treeWidgetCurrentElementClass div {
-    padding: 7px;
-    background-color: #ddd;
+    background-color: white;
 }
 
 .treeWidgetHintClass {
-    background-color: green;
+    background-color: #00a65a;
+    opacity: 0.65;
 }
 

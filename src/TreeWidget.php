@@ -3,6 +3,7 @@
 namespace alexeevdv\nested\tree;
 
 use creocoder\nestedsets\NestedSetsBehavior;
+use phpDocumentor\Reflection\Types\Callable_;
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
 use yii\db\ActiveRecord;
@@ -28,6 +29,16 @@ class TreeWidget extends Widget
      * @var string
      */
     public $theme = TreeWidgetAdminLteThemeAsset::class;
+
+    /**
+     * @var string|callable
+     */
+    public $itemView;
+
+    /**
+     * @var array
+     */
+    public $buttons = [];
 
     /**
      * @inheritdoc
@@ -65,7 +76,7 @@ class TreeWidget extends Widget
         <?php
 
         $orderAction = Url::to($this->orderAction);
-        $this->getView()->registerJs("$('#$widgetId').treeWidget({orderAction: $orderAction});");
+        $this->getView()->registerJs("$('#$widgetId').treeWidget({orderAction: '$orderAction'});");
     }
 
     /**
@@ -74,8 +85,30 @@ class TreeWidget extends Widget
     protected function renderItem($item)
     {
         ?>
-        <li class="sortableListsOpen" data-id="<?= $item->primaryKey ?>" class="treeWidgetElement">
-            <div><?= $item->title ?> <?= $item->primaryKey?></div>
+        <li class="sortableListsOpen treeWidgetElement" data-id="<?= $item->primaryKey ?>">
+            <div>
+                <?php
+                if (is_callable($this->itemView)) {
+                    echo call_user_func($this->itemView, $item);
+                }
+                if (is_string($this->itemView)) {
+                    return $this->getView()->render($this->itemView, [
+                        'model' => $item,
+                    ]);
+                }
+                ?>
+                <span class="treeWidgetElementButtons">
+                    <?php
+                    foreach ($this->buttons as $button) {
+                        ?>
+                        <span class="treeWidgetElementButton">
+                            <?= call_user_func($button, $item) ?>
+                        </span>
+                        <?php
+                    }
+                    ?>
+                </span>
+            </div>
             <?php
             $children = $item->children(1)->all();
             if ($children) {

@@ -53,7 +53,7 @@ class OrderAction extends Action
             $oldNextId = $modelClass::find()
                 ->andWhere([
                     $behavior->treeAttribute => $item->{$behavior->treeAttribute},
-                    $behavior->levelAttribute => $item->{$behavior->levelAttribute},
+                    $behavior->depthAttribute => $item->{$behavior->depthAttribute},
                 ])
                 ->andWhere(['>', $behavior->leftAttribute, $item->{$behavior->leftAttribute}])
                 ->orderBy([$behavior->leftAttribute => SORT_ASC])
@@ -70,7 +70,7 @@ class OrderAction extends Action
             $oldPrevId = $modelClass::find()
                 ->andWhere([
                     $behavior->treeAttribute => $item->{$behavior->treeAttribute},
-                    $behavior->levelAttribute => $item->{$behavior->levelAttribute},
+                    $behavior->depthAttribute => $item->{$behavior->depthAttribute},
                 ])
                 ->andWhere(['<', $behavior->rightAttribute, $item->{$behavior->rightAttribute}])
                 ->orderBy([$behavior->rightAttribute => SORT_DESC])

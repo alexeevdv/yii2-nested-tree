@@ -23,6 +23,11 @@
                 active: false
             }
         });
+
+        this.on('mousedown', '.treeWidgetElementButtons', function (event) {
+            event.stopPropagation();
+        });
+
         return this;
     };
 })(jQuery);
