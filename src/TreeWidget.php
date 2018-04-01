@@ -23,7 +23,7 @@ class TreeWidget extends Widget
     /**
      * @var string|array
      */
-    public $orderAction = ['order'];
+    public $orderAction;
 
     /**
      * @var string
@@ -75,8 +75,10 @@ class TreeWidget extends Widget
         </ul>
         <?php
 
-        $orderAction = Url::to($this->orderAction);
-        $this->getView()->registerJs("$('#$widgetId').treeWidget({orderAction: '$orderAction'});");
+        if ($this->orderAction !== null) {
+            $orderAction = Url::to($this->orderAction);
+            $this->getView()->registerJs("$('#$widgetId').treeWidget({orderAction: '$orderAction'});");
+        }
     }
 
     /**
